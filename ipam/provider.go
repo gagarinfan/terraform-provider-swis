@@ -1,4 +1,4 @@
-package ipam
+package swis
 
 import (
 	"github.com/mrxinu/gosolar"
@@ -28,10 +28,8 @@ func Provider() terraform.ResourceProvider {
 				DefaultFunc: schema.EnvDefaultFunc("SOLAR_PASSWORD", nil),
 			},
 		},
-		DataSourcesMap: map[string]*schema.Resource{},
-
 		ResourcesMap: map[string]*schema.Resource{
-			"ipam": resourceIp(),
+			"swis_ipam": resourceIp(),
 		},
 
 		ConfigureFunc: providerConfigure,
