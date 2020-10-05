@@ -19,7 +19,7 @@ If you find an issue with this provider, please report it. Contributions are wel
 
 swis_ipam:
 - **vlan_address** (string): (Required) vlan address to find/search IP Address
-- **vlan_address** (string): (Optional) the vlan name of IP Address
+- **vlan_name** (string): (Optional) the vlan name of IP Address
 - **comment** (string): (Required) comment to assign to IP Address. Must start with `Reserved by`
 - **ip_address** (string): (Optional) if IP Address must be static then write it here. Default nil
 - **status_code** (int): (Optional) status code for IP Address instance: 1- assigned, 2- free. Default 1
@@ -29,7 +29,7 @@ swis_ipam:
 
 swis_ipam:
 - **vlan_address** : the vlan address of IP Address
-- **vlan_address** : the vlan name of IP Address
+- **vlan_name** : the vlan name of IP Address
 - **comment** : the comment of IP Address
 - **ip_address** : the IP Address
 - **status_code** : the value of IP Address's status code: 1- assigned, 2- free
