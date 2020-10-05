@@ -3,7 +3,7 @@
 https://www.solarwinds.com/
 
 ## Authors
-- Michał Gębka <michal.gebka@santander.pl> <michal.j.gebka@gmail.com>
+- Michał Gębka <michal.j.gebka@gmail.com>
 
 ## Issues and Contributing
 If you find an issue with this provider, please report it. Contributions are welcome.
