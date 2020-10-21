@@ -136,16 +136,14 @@ func getFreeIpEntity(client *gosolar.Client, subnetId int) (*IPEntity, error) {
 	query := "SELECT TOP 1 IpNodeId,IPAddress,Comments,Status,Uri FROM IPAM.IPNode WHERE SubnetId='" + strconv.Itoa(subnetId) + "' and status=2 AND IPOrdinal BETWEEN 11 AND 254"
 	res, err := client.Query(query, nil)
 	if err != nil {
-		log.Fatal(err)
 		return nil, err
 	}
 	jsonErr := json.Unmarshal(res, &ipEntity)
 	if jsonErr != nil {
-		log.Fatal(jsonErr)
 		return nil, jsonErr
 	}
 	if len(ipEntity) == 0 {
-		ipNullErr := errors.New("Provided IP: " + ipEntity[0].IPAddress + " does not exist or empty!")
+		ipNullErr := errors.New("There are no free IPs in this subnet!")
 		return nil, ipNullErr
 	}
 	if ipEntity[0].Status != 2 {
@@ -210,10 +208,10 @@ func validateAddresses(ip_address string) error {
 func validateAddresInSubnet(vlan_address string, mask int, ip_address string) error {
 	subnet := vlan_address + "/" + strconv.Itoa(mask)
 	ip := ip_address + "/" + strconv.Itoa(mask)
-	_,subnet_parsed,_ := net.ParseCIDR(subnet)
-	ip_parsed,_,_ := net.ParseCIDR(ip)
+	_,subnetParsed,_ := net.ParseCIDR(subnet)
+	ipParsed,_,_ := net.ParseCIDR(ip)
 
-	if subnet_parsed.Contains(ip_parsed) {
+	if subnetParsed.Contains(ipParsed) {
 		return nil
 	} else {
 		ipv4SubnetError := errors.New("Provided IP " + ip_address + " does not belong to " + vlan_address + "/" + strconv.Itoa(mask) + " subnet!")
