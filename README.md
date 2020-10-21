@@ -20,7 +20,7 @@ If you find an issue with this provider, please report it. Contributions are wel
 swis_ipam:
 - **vlan_address** (string): (Required) vlan address to find/search IP Address
 - **vlan_name** (string): (Optional) the vlan name of IP Address
-- **comment** (string): (Required) comment to assign to IP Address. Must start with `Reserved by`
+- **comment** (string): (Required) comment to assign to IP Address
 - **ip_address** (string): (Optional) if IP Address must be static then write it here. Default nil
 - **status_code** (int): (Optional) status code for IP Address instance: 1- assigned, 2- free. Default 1
 - **avoid_dhcp_scope** (bool): (Optional) set to true if want to avoid subnets with DHCP Scope. Default true
