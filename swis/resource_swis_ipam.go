@@ -206,7 +206,8 @@ func resourceIpRead(d *schema.ResourceData, meta interface{}) error {
 		log.Fatal(dhcpErr)
 		return  dhcpErr
 	}
-	if !avoid_dhcp_scope && dhcpScope {
+	//Validate if subnet is DHCP AND avoid_dhcp_scope is true
+	if avoid_dhcp_scope && dhcpScope {
 		dhcpError := errors.New("avoid_dhcp_flag set to true, but subnet HAS dhcp scope")
 		return dhcpError
 	}
@@ -284,7 +285,6 @@ func resourceIpImport(d *schema.ResourceData, meta interface{}) ([]*schema.Resou
 	d.Set("vlan_address", vlanAddress)
 	d.Set("ip_address", ip_address)
 	d.Set("vlan_name", comuptedVlanName)
-	//d.Set("avoid_dhcp_subnet", true)
 
 	return []*schema.ResourceData{d}, nil
 }
